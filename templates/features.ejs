@@ -3,15 +3,21 @@
 <head>
     <%- include('./partials/head.ejs') %>
 </head>
-<body>
+<body  class="container">
     <%- include('./partials/navbar.ejs') %>
     <h1>Hello, features!</h1>
     <div id="app">
+        <form @submit.prevent="createServer">
+            <div class="mb-3">              
+              <input type="text" class="form-control" v-model="name">              
+            </div>                        
+            <button type="submit" class="btn btn-primary mb-3">Submit</button>
+          </form>
         <div class="spinner-border" role="status" v-if="servers.length === 0">
             <span class="visually-hidden">Loading...</span>
         </div>
         <ul class="list-group" v-else>
-            <li class="list-group-item" v-for="server in servers">{{server.id}}. {{server.name}} - {{server.status}}</li>
+            <li class="list-group-item" v-for="server in servers"> {{server.name}} - {{server.status}} <span @click="remove(server.id)"> &#10006;</span></li>
         </ul>
     </div>
     <script src="https://unpkg.com/vue"></script>

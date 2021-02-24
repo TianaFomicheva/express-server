@@ -18,6 +18,8 @@ app.get('/features', (req,res)=>{
 })
 
 app.use(express.static(path.resolve(__dirname, 'static')))
+app.use(express.json())
+app.use(express.urlencoded({extended: false}))
 app.use(requestTime)
 app.use(ServerRoutes)
 
