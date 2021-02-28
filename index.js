@@ -1,4 +1,3 @@
-import { render } from 'ejs'
 import express from 'express'
 import path from 'path'
 import { requestTime } from './middleware.js'
@@ -6,7 +5,7 @@ import ServerRoutes from './routes/servers.js'
 const __dirname = path.resolve()
 
 const app = express()
-const PORT = process.env.PORT ?? 3000
+const PORT = process.env.PORT || 3000
 app.set('view engine', 'ejs')
 app.set('views', path.resolve(__dirname, 'templates'))
 
